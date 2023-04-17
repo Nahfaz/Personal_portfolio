@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/app.css">
+    <title>Private Contacts|Portfolio</title>
+</head>
+<body>
+    <h2>Private Contact List</h2>
+    <% if (contacts === undefined || contacts == []) { %>
+        <tr>No available private contacts</tr>
+    <% } else { %>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+            <tbody>
+                <% contacts.forEach(function(contact) { %>
+                    <tr>
+                        <td><%= contact.name %></td>
+                        <td><%= contact.email %></td>
+                        <td><%= contact.phone %></td>
+                        <td><%= contact.address %></td>
+                        <td><a href="/contacts/private/edit/<%= contact.id %>">edit</a></td>
+                        <td>
+                            <a href="/contacts/private/delete/<%= contact.id %>" type="submit">delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+    <br>
+    <a href="/contacts/private/create">Create New</a>
+    <a href="/">Home</a>
+</body>
+</html>
